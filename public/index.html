@@ -14,16 +14,30 @@
 
   <div id="app">
 
-    <h2>Base Rate: {{currencies.base}}</h2>
-    <h2>Rates : </h2>
+    <h3>Base Rate: {{currencies.base}}</h3>
+    <h3>Rates : </h3>
     <ul id="currency">
       <li v-for="(rate,name) in currencies.rates">
-        {{name}}---{{rate}}
+        {{name}}      {{rate}}
       </li>
     </ul>
-    <h2>Date: {{currencies.date}}</h2>
+    <h3>Date: {{currencies.date}}</h3>
 
+  <h3>Convert from Euros:</h3>
+    <input v-model.number="euroAmount" type="number" placeholder="Enter a value in Euros">
+    <label for="currency-select">Select a currency to convert to:</label>
+    <select id="currency-select" v-model.number="selectedCurrency" class="" name="">
+      <option v-for="(rate, country) in currencies.rates" :value.number="rate">{{country}}   {{rate}}</option>
+    </select>
+    <h3 v-if="selectedCurrency">€{{euroAmount}} is {{euroToCurrency}}</h3>
 
+  <h3>Convert to Euros:</h3>
+    <input v-model.number="currencyAmount"type="number" placeholder="Enter a value">
+    <label for="toEuro-select">Select a currency to convert into Euros:</label>
+    <select id="toEuro-select" v-model="selectedCurrencyToEuro" class="" name="">
+      <option v-for="(rate, country) in currencies.rates" :value="rate">{{country}}   {{rate}}</option>
+    </select>
+    <h3 v-if="selectedCurrencyToEuro">{{currencyAmount}} is €{{currencyToEuro}}</h3>
 
 
   </div>
