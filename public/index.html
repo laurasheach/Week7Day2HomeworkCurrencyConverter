@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,26 @@
   <title>Currency Converter</title>
   <script src="./js/bundle.js" type="text/javascript"></script>
 </head>
+
 <body>
-<h1>Currency Converter</h1>
+  <h1>Currency Converter</h1>
+
+  <div id="app">
+
+    <h2>Base Rate: {{currencies.base}}</h2>
+    <h2>Rates : </h2>
+    <ul id="currency">
+      <li v-for="(rate,name) in currencies.rates">
+        {{name}}---{{rate}}
+      </li>
+    </ul>
+    <h2>Date: {{currencies.date}}</h2>
+
+
+
+
+  </div>
+
 </body>
+
 </html>
